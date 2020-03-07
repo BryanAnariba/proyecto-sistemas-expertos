@@ -1,0 +1,13 @@
+.list-inline-item {
+  width: 55px;
+  border-radius: 60%;
+  margin-left: 50px;
+}
+
+.list-inline-item img {
+  padding: 5px;
+}
+
+.list-inline-item:hover {
+  background-color: #FEA000;
+}

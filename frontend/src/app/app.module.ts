@@ -8,6 +8,10 @@ import { LoginPasswordComponent } from './login-password/login-password.componen
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { PanelCmsComponent } from './panel-cms/panel-cms.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { FooterComponent } from './footer/footer.component';
+import { PanelPrincipalComponent } from './panel-principal/panel-principal.component';
+import { BadRequestComponent } from './bad-request/bad-request.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     LoginPasswordComponent,
     SignUpComponent,
     PanelCmsComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    FooterComponent,
+    PanelPrincipalComponent,
+    BadRequestComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
