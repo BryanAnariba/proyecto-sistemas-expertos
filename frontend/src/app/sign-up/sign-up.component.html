@@ -1,6 +1,32 @@
 
-<div id="login-component" class="container-fluid" style=" padding-top: 120px; ">
-  <div id="contenedor-signup" class="row p-5">
+<nav id="settings-container"class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" style="background-color: #24355C;">
+  <div class="container">
+      <a class="navbar-brand" routerLink="/"><span class="font-weight-bolder"><img src="../../assets/img/cerrar-sesion.png" alt="Logo Casita"> Regresar a la Plataforma</span></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <ul id="enlaces-usuario" class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span><img src="../../assets/img/usuario.png" alt=""></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-default"
+              aria-labelledby="navbarDropdownMenuLink-333">
+              <a class="dropdown-item text-center" routerLink="/login-user"><img src="../../assets/img/iniciar-sesion.png" alt=""> Iniciar Sesion</a><hr>
+              <a class="dropdown-item text-center" routerLink="/sign-up"><img src="../../assets/img/anadir.png" alt=""> Crear Cuenta</a><hr>
+              <a class="dropdown-item text-center" href="#"><img src="../../assets/img/cerrar-sesion.png" alt=""> Cerrar Sesion</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+  </div>
+</nav>
+<div id="login-component" class="container-fluid" style=" padding-top: 100px; ">
+  <div id="contenedor-signup" class="row p-5 ">
       <div class="col-lg-4 col-sm-12 mx-auto my-auto">
         <div id="carousel-example-1z" class="carousel slide carousel-fade carousel-fade bg-dark" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -38,7 +64,7 @@
         <div class="card">
           <div class="header pt-3 bg-dark lighten-2 text-center text-white">
             <div class="row d-flex justify-content-start">
-              <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5 font-weight-bolder">Creacion de nueva cuenta de usuario</h3>
+              <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5 font-weight-bolder" style="color:#FFA000;">Creacion de nueva cuenta de usuario</h3>
             </div>
           </div>
           <div class="card-body mx-4 mt-2">

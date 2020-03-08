@@ -6,12 +6,18 @@ import { AppComponent } from './app.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { LoginPasswordComponent } from './login-password/login-password.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { PanelCmsComponent } from './panel-cms/panel-cms.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { PanelPrincipalComponent } from './panel-principal/panel-principal.component';
 import { BadRequestComponent } from './bad-request/bad-request.component';
-import { HeaderComponent } from './header/header.component';
+import { SettingsUserComponent } from './settings-user/settings-user.component';
+import { ChangeEmailComponent } from './change-email/change-email.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ChangePhotographyComponent } from './change-photography/change-photography.component';
+import { PanelInputComponent } from './panel-input/panel-input.component';
+
+//import { EditorModule } from '@tinymce/tinymce-angular'; //
+
 
 @NgModule({
   declarations: [
@@ -19,12 +25,16 @@ import { HeaderComponent } from './header/header.component';
     LoginUserComponent,
     LoginPasswordComponent,
     SignUpComponent,
-    PanelCmsComponent,
     LandingPageComponent,
     FooterComponent,
     PanelPrincipalComponent,
     BadRequestComponent,
-    HeaderComponent
+    SettingsUserComponent,
+    ChangeEmailComponent,
+    ChangePasswordComponent,
+    ChangePhotographyComponent,
+    PanelInputComponent,
+    //EditorModule
   ],
   imports: [
     BrowserModule,

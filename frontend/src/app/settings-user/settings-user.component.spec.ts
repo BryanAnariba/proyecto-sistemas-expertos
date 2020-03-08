@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PanelCmsComponent } from './panel-cms.component';
+import { SettingsUserComponent } from './settings-user.component';
 
-describe('PanelCmsComponent', () => {
-  let component: PanelCmsComponent;
-  let fixture: ComponentFixture<PanelCmsComponent>;
+describe('SettingsUserComponent', () => {
+  let component: SettingsUserComponent;
+  let fixture: ComponentFixture<SettingsUserComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PanelCmsComponent ]
+      declarations: [ SettingsUserComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PanelCmsComponent);
+    fixture = TestBed.createComponent(SettingsUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

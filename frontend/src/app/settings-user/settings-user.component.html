@@ -1,0 +1,104 @@
+<nav id="settings-container"class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" style="background-color: #24355C;">
+  <div class="container">
+      <a class="navbar-brand" routerLink="/panel-principal"><span class="font-weight-bolder"><img src="../../assets/img/cerrar-sesion.png" alt="Logo Casita"> Regresar Al Panel Principal</span></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+          <ul id="enlaces-usuario" class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span>Bienvenido <img src="../../assets/img/usuario.png" width="35"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                aria-labelledby="navbarDropdownMenuLink-333">
+                <a class="dropdown-item text-center" routerLink="/settings-user"><img src="../../assets/img/equipo (1).png" alt="Logo equipo"> Configuraciones</a><hr>
+                <a class="dropdown-item text-center" href="#"><img src="../../assets/img/cerrar-sesion.png" alt="logo cierre sesion"> Cerrar Sesion</a>
+              </div>
+            </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row" style="margin-top: 100px;">
+    <div class="col-lg-12 col-sm-12">
+      <div class="card">
+        <div class="card-header bg-dark text-center" style="color:#FFA000;">
+          <h3>Zona Configuraciones de Usuario</h3>
+        </div>
+        <div class="card-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 col-sm-12 mb-4 animated flipInY">
+                  <div class="card" style="background-color: #FFA000;">
+                    <div class="view text-center mx-auto">
+                      <img src="../../assets/img/gmail.png" class="img-fluid" width="180" alt="photo">
+                      <a href="#">
+                        <div class="mask rgba-white-slight"></div>
+                      </a>
+                    </div>
+                    <div class="card-body text-center">
+                      <!--Title-->
+                      <h4 class="card-title white-text">Cambia Tu Correo</h4>
+                      <!--Text-->
+                      <p class="card-text white-text">
+                        En esta zona podras cambiar tu correo electronico con solo dar un lick en el enlace de abajo
+                      </p>
+                      <a routerLink="/change-email" class="btn btn-light-green btn-lg waves-effect">Realizar Cambio Correo</a>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-12 mb-4 animated flipInY">
+                <div class="card" style="background-color: #FFA000;">
+                  <div class="view text-center mx-auto">
+                    <img src="../../assets/img/contrasena.png" class="img-fluid" width="180" alt="photo">
+                    <a href="#">
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                  <div class="card-body text-center">
+                    <!--Title-->
+                    <h4 class="card-title white-text">Cambia Tu Clave</h4>
+                    <!--Text-->
+                    <p class="card-text white-text">
+                      En esta zona podras cambiar tu clave de ingreso a la plataforma con solo dar un lick en el enlace de abajo
+                    </p>
+                    <a routerLink="/change-password" class="btn btn-light-green btn-lg waves-effect">Realizar Cambio Clave</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-12 mb-4 animated flipInY">
+                <div class="card" style="background-color: #FFA000;">
+                  <div class="view text-center mx-auto">
+                    <img src="../../assets/img/gallery.png" class="img-fluid" width="180" alt="photo">
+                    <a href="#">
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                  <div class="card-body text-center">
+                    <h4 class="card-title white-text">Cambia Tu Fotografia</h4>
+                    <p class="card-text white-text">
+                      En esta zona podras cambiar tu fotografia a la plataforma con solo dar un lick en el enlace de abajo
+                    </p>
+                    <a routerLink="/change-photography" class="btn btn-light-green btn-lg waves-effect">Realizar Cambio Clave</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer" style="background-color: #FFA000;">
+
+      </div>
+      </div>
+    </div>
+  </div>
+
+<br>

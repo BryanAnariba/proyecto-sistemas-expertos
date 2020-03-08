@@ -1,7 +1,40 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-
+<nav id="settings-container"class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" style="background-color: #24355C;">
+  <div class="container">
+      <a class="navbar-brand" routerLink="/"><span class="font-weight-bolder"><img src="../../assets/img/cerrar-sesion.png" alt="Logo Casita"> Regresar a la Plataforma</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <ul id="enlaces-usuario" class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span><img src="../../assets/img/usuario.png" alt=""></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-default"
+              aria-labelledby="navbarDropdownMenuLink-333">
+              <a class="dropdown-item text-center" routerLink="/login-user"><img src="../../assets/img/iniciar-sesion.png" alt=""> Iniciar Sesion</a><hr>
+              <a class="dropdown-item text-center" routerLink="/sign-up"><img src="../../assets/img/anadir.png" alt=""> Crear Cuenta</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row" style="padding-top: 120px;">
+    <div class="col-lg-12 col-sm-12">
+      <div class="card">
+        <div class="card-header" style="background-color: #FFA000;">
+          <h1 class="text-center text-white font-weight-bolder">
+            Pagina No Encontrada
+          </h1>
+        </div>
+        <div class="card-body text-center">
+          <img src="../../assets/img/pagina-no-encontrada.png" class="img-fluid" alt="bad-request">
+        </div>
+      </div>
     </div>
   </div>
 </div>

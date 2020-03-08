@@ -39,3 +39,11 @@ border-bottom: 3px solid transparent;
 border-bottom: 3px solid #2F91DC;
 color: #979904 !important;
 }
+
+.btn-light-green {
+  border-radius: 15px;
+  font-weight: bold;
+}
+.btn-light-green:hover {
+  background-color: #24355C !important;
+}
