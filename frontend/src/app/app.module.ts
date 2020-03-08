@@ -15,6 +15,10 @@ import { ChangeEmailComponent } from './change-email/change-email.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ChangePhotographyComponent } from './change-photography/change-photography.component';
 import { PanelInputComponent } from './panel-input/panel-input.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
+import { InsertUsersComponent } from './insert-users/insert-users.component';
+import { AssignPrivsUserComponent } from './assign-privs-user/assign-privs-user.component';
+import { AssignStatusUserComponent } from './assign-status-user/assign-status-user.component';
 
 //import { EditorModule } from '@tinymce/tinymce-angular'; //
 
@@ -34,6 +38,10 @@ import { PanelInputComponent } from './panel-input/panel-input.component';
     ChangePasswordComponent,
     ChangePhotographyComponent,
     PanelInputComponent,
+    AdminUserComponent,
+    InsertUsersComponent,
+    AssignPrivsUserComponent,
+    AssignStatusUserComponent,
     //EditorModule
   ],
   imports: [

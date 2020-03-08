@@ -10,7 +10,8 @@ import { SettingsUserComponent } from './settings-user/settings-user.component';
 import { ChangeEmailComponent } from './change-email/change-email.component'; //
 import { ChangePasswordComponent } from './change-password/change-password.component'; //
 import { ChangePhotographyComponent } from './change-photography/change-photography.component'; //
-import { PanelInputComponent } from './panel-input/panel-input.component';
+import { PanelInputComponent } from './panel-input/panel-input.component'; //
+import { AdminUserComponent } from './admin-user/admin-user.component'; //
 
 // aplicando rutas para poder dirigirme a x componente al apretar un link de navegacion para ello ocupo importar componentes
 const routes: Routes = [
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path: 'panel-input' ,
     component: PanelInputComponent
+  } ,
+  {
+    path: 'admin',
+    component: AdminUserComponent
   } ,
   {
     path: '**' ,
