@@ -41,7 +41,7 @@
                     <img src="../../assets/img/browsing.png" class="img-fluid" alt="trabajando">
                   </div>
                   <div class="col-lg-8 col-sm-12 my-auto">
-                    <form class="card">
+                    <form class="card" [formGroup]="changeEmail">
                       <div class="card-header bg-dark">
 
                       </div>
@@ -49,13 +49,38 @@
                         <div class="form-row">
                           <div class="col">
                               <div class="md-form">
-                                  <input type="email" id="email-user" class="form-control">
+                                  <input
+                                    [ngClass]="{'input-error': email.invalid && (email.dirty || email.touched)}"
+                                    formControlName="email"
+                                    type="email"
+                                    id="email-user"
+                                    class="form-control ">
+                                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                      <span *ngIf="email.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                                      <span *ngIf="email.errors.pattern"><strong>Error, Correo No Valido</strong></span>
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
                                   <label for="email-user">Digite su Correo Electronico</label>
                               </div>
+
                           </div>
                           <div class="col">
                             <div class="md-form">
-                                <input type="email" id="repeat-email-user" class="form-control">
+                                <input
+                                  [ngClass]="{'input-error': repeatEmail.invalid && (repeatEmail.dirty || repeatEmail.touched)}"
+                                  formControlName="repeatEmail"
+                                  type="email"
+                                  id="repeat-email-user"
+                                  class="form-control ">
+                                  <div *ngIf="repeatEmail.invalid && (repeatEmail.dirty || repeatEmail.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <span *ngIf="repeatEmail.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                                    <span *ngIf="repeatEmail.errors.pattern"><strong>Error, Correo No Valido</strong></span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
                                 <label for="repeat-email-user">Repita su Correo Electronico</label>
                             </div>
                         </div>
@@ -63,20 +88,44 @@
                         <div class="form-row">
                           <div class="col">
                               <div class="md-form">
-                                  <input type="password" id="new-email-user" class="form-control">
-                                  <label for="new-email-user">Digite su Nueva Correo de Ingreso</label>
+                                  <input
+                                    [ngClass]="{'input-error': newEmail.invalid && (newEmail.dirty || newEmail.touched)}"
+                                    formControlName="newEmail"
+                                    type="email"
+                                    id="new-email-user"
+                                    class="form-control ">
+                                    <div *ngIf="newEmail.invalid && (newEmail.dirty || newEmail.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                      <span *ngIf="newEmail.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                                      <span *ngIf="newEmail.errors.pattern"><strong>Error, Correo No Valido</strong></span>
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                  <label for="new-email-user">Digite su Nuevo Correo de Ingreso</label>
                               </div>
                           </div>
                           <div class="col">
                               <div class="md-form">
-                                  <input type="password" id="repeat-new-email-user" class="form-control">
+                                  <input
+                                    [ngClass]="{'input-error': repeatNewEmail.invalid && (repeatNewEmail.dirty || repeatNewEmail.touched)}"
+                                    formControlName="repeatNewEmail"
+                                    type="email"
+                                    id="repeat-new-email-user"
+                                    class="form-control ">
+                                    <div *ngIf="repeatNewEmail.invalid && (repeatNewEmail.dirty || repeatNewEmail.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                      <span *ngIf="repeatNewEmail.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                                      <span *ngIf="repeatNewEmail.errors.pattern"><strong>Error, Correo No Valido</strong></span>
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
                                   <label for="repeat-new-email-user">Repita su Nueva Correo de Ingreso</label>
                               </div>
                           </div>
                         </div>
                         <div class="form-row mt-3">
                           <div class="col text-center items-center mx-auto">
-                            <button type="button" class="btn btn-light-green">Guardar Cambios en el Sistema</button>
+                            <button type="button" class="btn btn-light-green" [disabled]="!changeEmail.valid" (click)="saveChanges()">Guardar Cambios en el Sistema</button>
                           </div>
                         </div>
                       </div>

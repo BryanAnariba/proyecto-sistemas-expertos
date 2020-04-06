@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Cosas importadas
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginUserComponent } from './login-user/login-user.component';
@@ -19,8 +20,21 @@ import { AdminUserComponent } from './admin-user/admin-user.component';
 import { InsertUsersComponent } from './insert-users/insert-users.component';
 import { AssignPrivsUserComponent } from './assign-privs-user/assign-privs-user.component';
 import { AssignStatusUserComponent } from './assign-status-user/assign-status-user.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import 'froala-editor/js/plugins.pkgd.min.js';
+import 'froala-editor/js/plugins/align.min.js';
+import 'froala-editor/js/languages/de.js';
+import 'froala-editor/js/third_party/font_awesome.min';
+import 'froala-editor/js/third_party/image_tui.min';
+import 'froala-editor/js/third_party/spell_checker.min';
+import 'froala-editor/js/third_party/embedly.min';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { InsertNewBlogComponent } from './insert-new-blog/insert-new-blog.component';
+import { BankOfImagesComponent } from './bank-of-images/bank-of-images.component';
 
-//import { EditorModule } from '@tinymce/tinymce-angular'; //
+
 
 
 @NgModule({
@@ -42,11 +56,18 @@ import { AssignStatusUserComponent } from './assign-status-user/assign-status-us
     InsertUsersComponent,
     AssignPrivsUserComponent,
     AssignStatusUserComponent,
+    InsertNewBlogComponent,
+    BankOfImagesComponent,
     //EditorModule
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,//
+    HttpClientModule,//
+    ReactiveFormsModule,//
+    FroalaEditorModule.forRoot(),//
+    FroalaViewModule.forRoot()//
   ],
   providers: [],
   bootstrap: [AppComponent]

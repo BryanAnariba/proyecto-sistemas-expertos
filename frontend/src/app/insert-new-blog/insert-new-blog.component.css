@@ -1,0 +1,122 @@
+.top-nav-collapse {
+  background-color: #24355C;
+}
+@media (max-width: 768px) {
+  .navbar:not(.top-nav-collapse) {
+    background-color: #24355C;
+  }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  .navbar:not(.top-nav-collapse) {
+    background-color: #24355C;
+  }
+}
+
+.btn-primary {
+color: #fff;
+background-color: #979904 !important;
+}
+.btn-outline-white {
+color: #979904 !important;
+border: 2px solid #979904 !important;
+}
+.btn-outline-white:hover {
+background-color: #979904 !important;
+color: #fff !important;
+border: 2px  solid #fff !important;
+}
+
+.nav-link {
+color: #fff;
+font-size: 18px;
+-webkit-transition: .35s;
+transition: .35s;
+border-bottom: 3px solid transparent;
+}
+
+
+.nav-link:hover {
+border-bottom: 3px solid #2F91DC;
+color: #979904 !important;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 90px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+  position: fixed;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+.sidebar-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+}
+
+.sidebar .nav-link {
+  font-weight: 300;
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+}
+
+.sidebar .nav-link:hover {
+  color: #fff;
+  font-weight: bold;
+  background-color:#FFA000;
+  border: none;
+}
+
+.sidebar .nav-link .feather {
+margin-right: 4px;
+color: #fff;
+}
+
+.sidebar .nav-link.active {
+color: #ffffff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+color: inherit;
+}
+
+.sidebar-heading {
+font-size: .75rem;
+text-transform: uppercase;
+}
+
+#enlaces-info .nav-item{
+  padding-left: 15px;
+}
+
+#change-email-component {
+  background: #43C6AC;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F8FFAE, #43C6AC);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #F8FFAE, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.btn-light-green {
+  border-radius: 15px;
+  font-weight: bold;
+}
+.btn-light-green:hover {
+  background-color: #24355C !important;
+}
+
+.input-error {
+  border-bottom: solid 3px red !important;
+}

@@ -12,6 +12,10 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ChangePhotographyComponent } from './change-photography/change-photography.component'; //
 import { PanelInputComponent } from './panel-input/panel-input.component'; //
 import { AdminUserComponent } from './admin-user/admin-user.component'; //
+import { InsertUsersComponent } from './insert-users/insert-users.component';//
+import { InsertNewBlogComponent } from './insert-new-blog/insert-new-blog.component';//
+import { AssignPrivsUserComponent } from './assign-privs-user/assign-privs-user.component';//
+import { AssignStatusUserComponent } from './assign-status-user/assign-status-user.component'//
 
 // aplicando rutas para poder dirigirme a x componente al apretar un link de navegacion para ello ocupo importar componentes
 const routes: Routes = [
@@ -56,8 +60,24 @@ const routes: Routes = [
     component: PanelInputComponent
   } ,
   {
+    path: 'blogs' ,
+    component: InsertNewBlogComponent
+  } ,
+  {
     path: 'admin',
     component: AdminUserComponent
+  } ,
+  {
+    path: 'invite-users'  ,
+    component: InsertUsersComponent
+  } ,
+  {
+    path: 'asign-privs' ,
+    component: AssignPrivsUserComponent
+  } ,
+  {
+    path: 'asign-status' ,
+    component: AssignStatusUserComponent
   } ,
   {
     path: '**' ,

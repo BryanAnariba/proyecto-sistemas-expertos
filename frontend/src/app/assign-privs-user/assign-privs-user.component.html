@@ -1,1 +1,155 @@
-<p>assign-privs-user works!</p>
+<nav id="settings-container"class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" style="background-color: #24355C;">
+  <div class="container">
+      <a class="navbar-brand" routerLink="/panel-principal"><span class="font-weight-bolder"><img src="../../assets/img/cerrar-sesion.png" alt="Logo Casita"> Regresar Al Panel Principal</span></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+          <ul id="enlaces-usuario" class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span>Bienvenido <img src="../../assets/img/usuario.png" width="35"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                aria-labelledby="navbarDropdownMenuLink-333">
+                <a class="dropdown-item text-center" routerLink="/settings-user"><img src="../../assets/img/equipo (1).png" alt="Logo equipo"> Configuraciones</a><hr>
+                <a class="dropdown-item text-center" href="#"><img src="../../assets/img/cerrar-sesion.png" alt="logo cierre sesion"> Cerrar Sesion</a>
+              </div>
+            </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<div id="change-password-component" class="container-fluid card" style="padding-top: 120px;">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12">
+      <div class="card">
+        <div class="card-header bg-dark text-center" style="color:#FFA000;">
+          <h2>Cambie los privilegios de un usuario aqui</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6 col-sm-12">
+              <table class="table table-hover table-bordered">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Usuario</th>
+                    <th>Privilegio</th>
+                    <th>Ver datos del Usuario</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let usuario of usersInvited; let i = index">
+                    <td>{{ usuario.emailUser }}</td>
+                    <td>{{ usuario.optionUser }}</td>
+                    <td><input type="button" class="btn btn-info" value="Ver Detalles" (click)="getUserSelected( i )"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+              <div class="card">
+                <div class="card-header bg-dark">
+                  <h3 style="color:#FFA000;">Datos del Usuario</h3>
+                </div>
+                <div class="card-body">
+                  <form [formGroup] = "changePrivs">
+                    <div>
+                      <div class="form-group bg-dark">
+                        <label for="firstName"class="form-control ">Correo Electronico Usuario</label>
+                      </div>
+                      <input
+                        type="email"
+                        [ngClass]="{'input-error': emailUser.invalid && (emailUser.dirty || emailUser.touched)}"
+                        name="emailUser"
+                        id="emailUser"
+                        class="form-control input-error"
+                        formControlName="emailUser"
+                        required
+                        [(ngModel)] = "id"
+                        disabled>
+                        <div class="mt-2" *ngIf="emailUser.invalid && (emailUser.dirty || emailUser.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <span *ngIf="emailUser.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <br>
+                    </div>
+                        <div class="form-group bg-dark text-white" style="background:#212121;">
+                          <label class="form-control">Modo de Navegacion sobre el sitio web</label>
+                        </div>
+                        <div class="form-group">
+                          <select name="optionUser" formControlName="optionUser" id="" class="form-control" [(ngModel)] = "status">
+                            <option value="1">Lectura</option>
+                            <option value="2">Escritura</option>
+                            <option value="3">Lectura y Escritura</option>
+                          </select>
+                        </div>
+                        <div class="mt-2" *ngIf="emailUser.invalid && (emailUser.dirty || emailUser.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <span *ngIf="emailUser.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div>
+                          <div class="form-group">
+                            <label for="firstName" class="form-control">Estado Actual de usuario</label>
+                          </div>
+                          <input
+                            type="text"
+                            [ngClass]="{'input-error': statusInvited.invalid && (statusInvited.dirty || statusInvited.touched)}"
+                            name="statusInvited"
+                            id="statusInvited"
+                            class="form-control input-error"
+                            formControlName="statusInvited"
+                            required
+                            [(ngModel)] = "invitacion"
+                            disabled>
+                            <div class="mt-2" *ngIf="statusInvited.invalid && (statusInvited.dirty || statusInvited.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <span *ngIf="statusInvited.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+
+                        </div>
+                        <div class="form-group text-center">
+                          <input type="button" class="btn btn-success" value="Guardar Cambios" (click)="updateUserData ()">
+                        </div>
+                  </form>
+                </div>
+                <div class="card-footer" style="background-color:#FFA000;">
+                  <div *ngIf="flagRes == true" class="alert alert-dismissible fade show text-center text-white" role="alert"
+                    style="background-color:#8BC34A;">
+                    <span><b>{{ contentRes }}</b></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div *ngIf="flagRes == false"
+                    class="alert alert-danger alert-dismissible fade show text-center text-white" role="alert">
+                    <span><b>{{ contentRes }}</b></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer" style="background-color:#FFA000;">
+
+        </div>
+
+      </div>
+      <br><br><br><br>
+    </div>
+  </div>
+</div>

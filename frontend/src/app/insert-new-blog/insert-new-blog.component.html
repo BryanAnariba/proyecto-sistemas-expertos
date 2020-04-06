@@ -1,0 +1,199 @@
+<div class="container-fluid">
+
+</div>
+<nav id="settings-container" class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar"
+  style="background-color: #24355C;">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/panel-input"><span class="font-weight-bolder text-white"><img
+          src="../../assets/img/cerrar-sesion.png" alt="Logo Casita"> Regresar Al Panel Principal</span></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+      <ul id="enlaces-usuario" class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span>Bienvenido <img src="../../assets/img/usuario.png" width="35"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item text-center" routerLink="/settings-user"><img src="../../assets/img/equipo (1).png"
+                alt="Logo equipo"> Configuraciones</a>
+            <hr>
+            <a class="dropdown-item text-center" href="#"><img src="../../assets/img/cerrar-sesion.png"
+                alt="logo cierre sesion"> Cerrar Sesion</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div id="sign-up-container-body" class="container-fluid" style="padding-top: 98px;">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block sidebar" style="background-color: #263238;">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <strong>Tablero de Acciones</strong>
+            <a class="d-flex align-items-center text-muted" href="#">
+              <span data-feather="plus-circle"></span>
+            </a>
+          </h6>
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/escritorio (1).png" alt="logo escritorio" /> Escritorio</div></li>
+        </ul>
+        <ul class="nav flex-column">
+          <li class="nav-item"><div class="nav-link">Inicio</div></li>
+          <li class="nav-item"><div class="nav-link">Actualizaciones</div></li>
+        </ul>
+        <ul class="nav flex-column">
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/validacion.png" alt="logo validacion"> Entradas</div></li>
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/galeria (1).png" alt="logo galeria"> Medios</div></li>
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/enlazar.png" alt="logo enlazar"> Enlaces</div></li>
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/nuevo.png" alt="logo nuevo"> Paginas</div></li>
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/comentario.png" alt="logo comentario"> Commentarios</div></li>
+        </ul>
+        <br>
+        <ul class="nav flex-column">
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/cepillo.png" alt="logo cepillo"> Apariencia</div></li>
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/lan.png" alt="logo cable"> Plugins</div></li>
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/users.png" alt="logo usuario"> Usuarios</div></li>
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/herramientas.png" alt="logo kits"> Herramientas</div></li>
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/equipo (1).png" alt="logo team"> Ajustes</div></li>
+          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/esconder.png" alt="logo hide"> Ocultar Menu</div></li>
+        </ul>
+      </div>
+    </nav>
+    <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-5" style="height: 120vh;">
+      <div class="row pt-5">
+        <div class="col-lg-12 col-sm-12">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12 col-sm-12">
+                <br><br><br><br>
+                <div class="card">
+                  <div class="card-header bg-dark text-center">
+                    <h3 style="color:#FFA000;">Invite a nuevos usuarios o desarrolladores a su proyecto</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-4 col-sm-12">
+                        <div class="card">
+                          <div class="card-header text-center bg-dark">
+                            <h3 style="color:#FFA000;">Formulario creacion nuevo blog</h3>
+                          </div>
+                          <div class="card-body">
+                            <form [formGroup]="newBlog">
+                              <div class="md-form">
+                                <input [ngClass]="{'input-error': siteId.invalid && (siteId.dirty || siteId.touched)}"
+                                  formControlName="siteId" type="text" id="siteId-user" class="form-control ">
+                                <div *ngIf="siteId.invalid && (siteId.dirty || siteId.touched)"
+                                  class="alert alert-danger alert-dismissible fade show" role="alert">
+                                  <span *ngIf="siteId.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <label for="siteId-user">Digite id despues captura con cookie</label>
+                              </div>
+                              <div class="md-form">
+                                <input [ngClass]="{'input-error': blogName.invalid && (blogName.dirty || blogName.touched)}"
+                                  formControlName="blogName" type="email" id="blogName-user" class="form-control ">
+                                <div *ngIf="blogName.invalid && (blogName.dirty || blogName.touched)"
+                                  class="alert alert-danger alert-dismissible fade show" role="alert">
+                                  <span *ngIf="blogName.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                                  <span *ngIf="blogName.errors.maxLength"><strong>Nombre del blog no mayor a 50 caracteres</strong></span>
+                                  <span *ngIf="blogName.errors.minLength"><strong>Nombre del blog mayor a 1 caracter</strong></span>
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <label for="blogName-user">Ingrese el nombre del blog</label>
+                              </div>
+                              <div class="form-row mt-3">
+                                <div class="col text-center items-center mx-auto">
+                                  <button type="button" class="btn btn-light-green" [disabled]="!newBlog.valid"
+                                    (click)="saveBlog()">Guardar Blog</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="card-footer" style="background-color:#FFA000;">
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-8 col-sm-12">
+                        <div class="card">
+                          <div class="card-header text-center bg-dark">
+                            <h3 style="color:#FFA000;">Tablero de Usuarios</h3>
+                          </div>
+                          <div class="card-body">
+                            <table class="table  table-hover">
+                              <thead class="table-dark">
+                                <tr>
+                                  <th>
+                                    No
+                                  </th>
+                                  <th>
+                                    Id Sitio
+                                  </th>
+                                  <th>
+                                    Usuario
+                                  </th>
+                                  <th>
+                                    Eliminar Sitio
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody class="table-light table-bordered">
+                                <tr *ngFor="let blog of allBlogs; let i = index" >
+                                  <td class="mx-auto">{{ i }}</td>
+                                  <td class="mx-auto">{{ blog.siteId }}</td>
+                                  <td class="mx-auto">{{ blog.blogName }}</td>
+                                  <td class="mx-auto"><a type="button" class="btn btn-danger btn-rounded" (click)="deleteBlog( i )">Eliminar</a></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="card-footer">
+                          </div>
+                          <div class="card-footer" style="background-color:#FFA000;">
+                            <div *ngIf="flagRes == true"
+                                class="alert alert-dismissible fade show text-center text-white" role="alert" style="background-color:#8BC34A;" >
+                                <span><b>{{ contentRes }}</b></span>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div *ngIf="flagRes == false"
+                                class="alert alert-danger alert-dismissible fade show text-center text-white" role="alert" >
+                                <span><b>{{ contentRes }}</b></span>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer" style="background-color:#FFA000;">
+
+                  </div>
+
+                </div>
+                <br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+

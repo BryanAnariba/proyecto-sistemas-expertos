@@ -1,53 +1,63 @@
-<nav id="sign-up-container"class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" style="background-color: #24355C;">
+<nav id="sign-up-container" class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar"
+  style="background-color: #24355C;">
 
   <div class="container">
-      <a class="navbar-brand" routerLink="/"><span class="font-weight-bolder"><img src="../../assets/img/casa.png" alt="Logo Casita"> Mi Blog</span></a>
+    <a class="navbar-brand" routerLink="/"><span class="font-weight-bolder"><img src="../../assets/img/casa.png"
+          alt="Logo Casita"> Mi Blog</span></a>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-
-
-      <div class="collapse navbar-collapse" id="basicExampleNav">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
 
-          <ul id="enlaces-info" class="navbar-nav mr-auto ml-auto smooth-scroll">
-              <li class="nav-item">
-                  <a class="nav-link" href="#intro"><img src="../../assets/img/sincronizar.png" alt="Logo Sync"></a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#best-features"><img src="../../assets/img/correo.png" alt="Logo Correo"></a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  <span><img src="../../assets/img/mas.png" alt="signoSuma" style="font-size: 15px;"> Nuevo</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                  aria-labelledby="navbarDropdownMenuLink-333">
-                  <a class="dropdown-item text-center" href="#">Entrada</a><hr>
-                  <a class="dropdown-item text-center" href="#">Medio</a><hr>
-                  <a class="dropdown-item text-center" href="#">Enlace</a><hr>
-                  <a class="dropdown-item text-center" href="#">Pagina</a><hr>
-                  <a class="dropdown-item text-center" href="#">Usuario</a>
-                </div>
-              </li>
-          </ul>
-          <ul id="enlaces-usuario" class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <span>Bienvenido <img src="../../assets/img/usuario.png" width="35"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                aria-labelledby="navbarDropdownMenuLink-333">
-                <a class="dropdown-item text-center" routerLink="/settings-user"><img src="../../assets/img/equipo (1).png" alt="Logo equipo"> Configuraciones</a><hr>
-                <a class="dropdown-item text-center" href="#"><img src="../../assets/img/cerrar-sesion.png" alt="logo cierre sesion"> Cerrar Sesion</a>
-              </div>
-            </li>
-          </ul>
-      </div>
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+
+      <ul id="enlaces-info" class="navbar-nav mr-auto ml-auto smooth-scroll">
+        <li class="nav-item">
+          <a class="nav-link" href="#intro"><img src="../../assets/img/sincronizar.png" alt="Logo Sync"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#best-features"><img src="../../assets/img/correo.png" alt="Logo Correo"></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span><img src="../../assets/img/mas.png" alt="signoSuma" style="font-size: 15px;"> Nuevo</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item text-center">Entradas</a>
+            <hr>
+            <a class="dropdown-item text-center" routerLink="/blogs">Nueva Entrada</a>
+            <hr>
+            <a class="dropdown-item text-center" href="#">Medio</a>
+            <hr>
+            <a class="dropdown-item text-center" href="#">Enlace</a>
+            <hr>
+            <a class="dropdown-item text-center" href="#">Pagina</a>
+            <hr>
+            <a class="dropdown-item text-center" href="#">Usuario</a>
+          </div>
+        </li>
+      </ul>
+      <ul id="enlaces-usuario" class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span>Bienvenido <img src="../../assets/img/usuario.png" width="35"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item text-center" routerLink="/settings-user"><img src="../../assets/img/equipo (1).png"
+                alt="Logo equipo"> Configuraciones</a>
+            <hr>
+            <a class="dropdown-item text-center" routerLink="/admin"><img src="../../assets/img/equipo (1).png" alt="Logo equipo"> Admin</a><hr>
+            <a class="dropdown-item text-center" href="#"><img src="../../assets/img/cerrar-sesion.png"
+                alt="logo cierre sesion"> Cerrar Sesion</a>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 <div id="sign-up-container-body" class="container-fluid" style="padding-top: 98px;">
@@ -61,51 +71,129 @@
               <span data-feather="plus-circle"></span>
             </a>
           </h6>
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/escritorio (1).png" alt="logo escritorio" /> Escritorio</div></li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/escritorio (1).png" alt="logo escritorio" /> Escritorio
+            </div>
+          </li>
         </ul>
         <ul class="nav flex-column">
-          <li class="nav-item"><div class="nav-link">Inicio</div></li>
-          <li class="nav-item"><div class="nav-link">Actualizaciones</div></li>
+          <li class="nav-item">
+            <div class="nav-link">Inicio</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link">Actualizaciones</div>
+          </li>
         </ul>
         <ul class="nav flex-column">
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/validacion.png" alt="logo validacion"> Entradas</div></li>
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/galeria (1).png" alt="logo galeria"> Medios</div></li>
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/enlazar.png" alt="logo enlazar"> Enlaces</div></li>
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/nuevo.png" alt="logo nuevo"> Paginas</div></li>
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/comentario.png" alt="logo comentario"> Commentarios</div></li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/validacion.png" alt="logo validacion"> Entradas</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/galeria (1).png" alt="logo galeria"> Medios</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/enlazar.png" alt="logo enlazar"> Enlaces</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/nuevo.png" alt="logo nuevo"> Paginas</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/comentario.png" alt="logo comentario"> Commentarios</div>
+          </li>
         </ul>
         <br>
         <ul class="nav flex-column">
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/cepillo.png" alt="logo cepillo"> Apariencia</div></li>
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/lan.png" alt="logo cable"> Plugins</div></li>
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/users.png" alt="logo usuario"> Usuarios</div></li>
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/herramientas.png" alt="logo kits"> Herramientas</div></li>
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/equipo (1).png" alt="logo team"> Ajustes</div></li>
-          <li class="nav-item"><div class="nav-link"><img src="../../assets/img/esconder.png" alt="logo hide"> Ocultar Menu</div></li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/cepillo.png" alt="logo cepillo"> Apariencia</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/lan.png" alt="logo cable"> Plugins</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/users.png" alt="logo usuario"> Usuarios</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/herramientas.png" alt="logo kits"> Herramientas</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/equipo (1).png" alt="logo team"> Ajustes</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link"><img src="../../assets/img/esconder.png" alt="logo hide"> Ocultar Menu</div>
+          </li>
         </ul>
       </div>
     </nav>
     <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-5" style="height: 120vh;">
       <div class="row pt-5">
-        <div class="col-lg-8 col-sm-12">
+        <div class="col-lg-7 col-sm-12">
           <div class="card">
-            <div class="card-header">
-              <h3>Escritorio</h3>
+            <div class="card-header bg-dark text-center">
+              <h2 style="color:#FFA000"> Sitio Web -> {{ blogDetaills.blogName }}</h2>
             </div>
             <div class="card-body">
-
+              <div [froalaEditor]="dataFroala" [(froalaModel)]="editorContent"></div>
             </div>
             <div class="card-footer" style="background:#FFA000">
-              <h3 class="text-center text-white">Soon</h3>
+              <h3 class="text-center text-white">Diseña aqui</h3>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-sm-12">
-          <h4 class="font-weight-bolder">Borrador Rapido</h4>
-          <p>Que te esta pasando por la cabeza?</p>
-          <div class="form-group">
-            <input type="button" class="btn btn-primary" value="Solo Guardar">
+        <div class="col-lg-5 col-sm-12">
+          <div class="card">
+            <div class="card-header bg-dark">
+              <h3 class="text-center text-white">
+                Lista de Sitios
+              </h3>
+              <table class="table  table-hover">
+                <thead class="table-dark">
+                  <tr>
+                    <th>
+                      Id
+                    </th>
+                    <th>
+                      Sitio
+                    </th>
+                    <th>
+                      Ver Sitio
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="table-light table-bordered">
+                  <tr *ngFor="let blog of allBlogs; let i = index">
+                    <td>{{ i }}</td>
+                    <td class="mx-auto">{{ blog.blogName }}</td>
+                    <td class="mx-auto"><a type="button" class="btn btn-success btn-rounded" routerLink="/panel-input"
+                        (click)="goTheBlog(i)">Mostrar sitio</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-body success-color" style="background: #00C851;">
+              <h2 class="font-weight-bolder text-center text-white">Guardar Cambios</h2>
+              <p class="text-center text-white">Guarda Antes de Salir</p>
+              <div class="form-group text-center">
+                <input type="button" class="btn btn-primary" (click)="guardar()" value="Actualizar Sitio Web">
+              </div>
+            </div>
+            <div class="card-footer " style="background:#FFA000">
+              <div *ngIf="flagRes == true" class="alert alert-dismissible fade show text-center text-white" role="alert"
+                style="background-color:#8BC34A;">
+                <span><b>{{ contentRes }}</b></span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div *ngIf="flagRes == false"
+                class="alert alert-danger alert-dismissible fade show text-center text-white" role="alert">
+                <span><b>{{ contentRes }}</b></span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
 
