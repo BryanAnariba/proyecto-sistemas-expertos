@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Validators , FormControl , FormGroup } from '@angular/forms';
+import { AutentificacionUsuariosService } from '../services/autentificacion-usuarios.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',
@@ -8,32 +9,62 @@ import { Validators , FormControl , FormGroup } from '@angular/forms';
 })
 export class LoginUserComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient) { }
-  urlBackend: string = 'http://localhost:3500';
+  constructor(private autenticationService: AutentificacionUsuariosService , private router: Router ) { }
+  disparadorMensajeServer: boolean = false;
+  mensajeDesdeServer: string = '';
 
   // Agrupando Formulario
-  emailCredential = new FormGroup({
-    emailUser: new FormControl('' , [Validators.required , Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
-    cosa: new FormControl('')
+  userCredentials = new FormGroup({
+    correoPersona: new FormControl('' , [Validators.required , Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
+    passwordPersona: new FormControl('' , [Validators.required])
   });
 
   // Metodos para enlazar errores con los inputs
-  get emailUser () {
-    return this.emailCredential.get('emailUser');
+  get correoPersona () {
+    return this.userCredentials.get('correoPersona');
   }
-  get cosa() {
-    return this.emailCredential.get('cosa');
+  get passwordPersona() {
+    return this.userCredentials.get('passwordPersona');
   }
 
   ngOnInit(): void {
   }
 
-  verifyEmail () {
-    this.httpClient.post(`${this.urlBackend}/login-email` , this.emailCredential.value)
-      .subscribe((res:any) => {
-        console.log(res.statusRes);
-        console.log(res.user);
-      });
+  // 2 - Logueo de usuario para lo cual se necesitan las credenciales
+  logueoUsuario () {
+    this.autenticationService.logueoUsuario(this.userCredentials.value)
+    .subscribe(
+      (success: any) => {
+
+        // Si no encontro el correo electronico
+        if (success.codigoRes == 2) {
+          this.disparadorMensajeServer = true;
+          this.mensajeDesdeServer = success.mensaje;
+        }
+
+        // Si las credenciales son correctas
+        if(success.codigoRes == 1) {
+          console.log({ mensaje: 'Credenciales Correctas' });
+          console.log(success);
+
+          // Guardamos el success en localstorage
+          //localStorage.setItem('informacionAcceso' , JSON.stringify(success));
+          localStorage.setItem('token' , success.tokenAcceso);
+          console.log('tu token ' , localStorage.getItem('token'));
+          this.router.navigate(['/panel-principal']);
+        }
+
+        // Si la clave ingresada es incorrecta
+        if (success.codigoRes == 0) {
+          this.disparadorMensajeServer = true;
+          this.mensajeDesdeServer = success.mensaje;
+        }
+      } ,
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.disparadorMensajeServer = false;
   }
 
 }

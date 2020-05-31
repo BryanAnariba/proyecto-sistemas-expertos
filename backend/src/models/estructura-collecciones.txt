@@ -1,0 +1,20 @@
+colecciones
+-----> Usuarios
+	nombre
+
+-----> Paginas web , de los usuarios
+	Nombre sitio web
+	creadorSitioWeb: UsuarioAdmin
+	Estatus Sitio Web
+	Descripcion
+	Colaboradores: [
+		usuarios: 
+		email: 
+		estadoUsuario
+		rolUsuario
+	]
+
+------> Bitacoras
+
+
+	

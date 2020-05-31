@@ -1,7 +1,7 @@
 
 <nav id="settings-container"class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" style="background-color: #24355C;">
   <div class="container">
-      <a class="navbar-brand" routerLink="/"><span class="font-weight-bolder"><img src="../../assets/img/cerrar-sesion.png" alt="Logo Casita"> Regresar a la Plataforma</span></a>
+      <a class="navbar-brand" routerLink="/"><span class="font-weight-bolder text-white"><img src="../../assets/img/cerrar-sesion.png" alt="Logo Casita"> Regresar a la Plataforma</span></a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
           aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +18,6 @@
               aria-labelledby="navbarDropdownMenuLink-333">
               <a class="dropdown-item text-center" routerLink="/login-user"><img src="../../assets/img/iniciar-sesion.png" alt=""> Iniciar Sesion</a><hr>
               <a class="dropdown-item text-center" routerLink="/sign-up"><img src="../../assets/img/anadir.png" alt=""> Crear Cuenta</a><hr>
-              <a class="dropdown-item text-center" href="#"><img src="../../assets/img/cerrar-sesion.png" alt=""> Cerrar Sesion</a>
             </div>
           </li>
         </ul>
@@ -72,72 +71,72 @@
               <div class="md-form">
                 <input
                   type="text"
-                  [ngClass]="{'input-error': firstName.invalid && (firstName.dirty || firstName.touched)}"
-                  name="firstName"
-                  id="firstName"
+                  [ngClass]="{'input-error': nombresPersona.invalid && (nombresPersona.dirty || nombresPersona.touched)}"
+                  name="nombresPersona"
+                  id="nombresPersona"
                   class="form-control input-error"
-                  formControlName="firstName"
+                  formControlName="nombresPersona"
                   required>
-                  <div class="mt-2" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <span *ngIf="firstName.errors.required"><strong>Error el campo es obligatorio</strong></span>
-                    <span *ngIf="firstName.errors.maxlength"><strong>Error, maximo de caracteres 45</strong></span>
-                    <span *ngIf="firstName.errors.minlength"><strong>Error, minimo de caracteres 5</strong></span>
+                  <div class="mt-2" *ngIf="nombresPersona.invalid && (nombresPersona.dirty || nombresPersona.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <span *ngIf="nombresPersona.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                    <span *ngIf="nombresPersona.errors.maxlength"><strong>Error, maximo de caracteres 45</strong></span>
+                    <span *ngIf="nombresPersona.errors.minlength"><strong>Error, minimo de caracteres 5</strong></span>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                <label for="firstName">Digite sus Nombres</label>
+                <label for="nombresPersona">Digite sus Nombres</label>
               </div>
               <div class="md-form">
                 <input
                   type="text"
-                  [ngClass]="{'input-error': lastName.invalid && (lastName.dirty || lastName.touched)}"
-                  name="lastName"
-                  id="lastName"
+                  [ngClass]="{'input-error': apellidosPersona.invalid && (apellidosPersona.dirty || apellidosPersona.touched)}"
+                  name="apellidosPersona"
+                  id="apellidosPersona"
                   class="form-control input-error"
-                  formControlName="lastName"
+                  formControlName="apellidosPersona"
                   required>
-                  <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <span *ngIf="lastName.errors.required"><strong>Error el campo es obligatorio</strong></span>
-                    <span *ngIf="lastName.errors.maxlength"><strong>Error, maximo de caracteres 45</strong></span>
-                    <span *ngIf="lastName.errors.minlength"><strong>Debe tener un minimo de caracteres 5</strong></span>
+                  <div *ngIf="apellidosPersona.invalid && (apellidosPersona.dirty || apellidosPersona.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <span *ngIf="apellidosPersona.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                    <span *ngIf="apellidosPersona.errors.maxlength"><strong>Error, maximo de caracteres 45</strong></span>
+                    <span *ngIf="apellidosPersona.errors.minlength"><strong>Debe tener un minimo de caracteres 5</strong></span>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                <label for="lastName">Digite sus Apellidos</label>
+                <label for="apellidosPersona">Digite sus Apellidos</label>
               </div>
               <br>
               <div class="form-row">
                 <div class="col">
                   <div class="custom-control custom-radio">
                     <input
-                    [ngClass]="{'input-error': genderSameName.invalid }"
+                    [ngClass]="{'input-error': generoPersona.invalid }"
                       type="radio"
                       class="custom-control-input"
                       id="genero-masculino"
-                      name="genderSameName"
-                      formControlName="genderSameName"
-                      value="M">
+                      name="generoPersona"
+                      formControlName="generoPersona"
+                      value="Masculino">
                     <label class="custom-control-label" for="genero-masculino">Masculino</label>
                   </div>
                 </div>
                 <div class="col">
                   <div class="custom-control custom-radio">
                     <input
-                    [ngClass]="{'input-error': genderSameName.invalid }"
+                    [ngClass]="{'input-error': generoPersona.invalid }"
                       type="radio"
                       class="custom-control-input"
-                      id="genero-femenino" n
-                      ame="genderSameName" f
-                      ormControlName="genderSameName"
-                      value="F">
+                      id="genero-femenino"
+                      name="generoPersona"
+                      formControlName="generoPersona"
+                      value="Femenino">
                     <label class="custom-control-label" for="genero-femenino">Femenino</label>
                   </div>
                 </div>
               </div>
-              <div *ngIf="genderSameName.invalid && (genderSameName.dirty || genderSameName.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
-                <span *ngIf="genderSameName.errors.required"><strong>Error el campo es obligatorio</strong></span>
+              <div *ngIf="generoPersona.invalid && (generoPersona.dirty || generoPersona.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <span *ngIf="generoPersona.errors.required"><strong>Error el campo es obligatorio</strong></span>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -149,16 +148,16 @@
                 </div>
                 <div class="col">
                   <input
-                    [ngClass]="{'input-error': date.invalid && (date.dirty || date.touched)}"
+                    [ngClass]="{'input-error': fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)}"
                     type="date"
-                    name="date"
+                    name="fechaNacimiento"
                     class="form-control"
-                    id="date-input"
-                    name="date-input"
-                    formControlName="date"
+                    id="fechaNacimiento-input"
+                    name="fechaNacimiento-input"
+                    formControlName="fechaNacimiento"
                     required>
-                    <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <span *ngIf="date.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                    <div *ngIf="fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <span *ngIf="fechaNacimiento.errors.required"><strong>Error el campo es obligatorio</strong></span>
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -169,15 +168,15 @@
                 <div class="col">
                     <div class="md-form">
                         <input
-                        [ngClass]="{'input-error': emailUser.invalid && (emailUser.dirty || emailUser.touched)}"
+                        [ngClass]="{'input-error': correoPersona.invalid && (correoPersona.dirty || correoPersona.touched)}"
                           type="email"
-                          name="emailUser"
+                          name="correoPersona"
                           id="email-user"
                           class="form-control"
-                          formControlName="emailUser">
-                          <div *ngIf="emailUser.invalid && (emailUser.dirty || emailUser.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <span *ngIf="emailUser.errors.required"><strong>Error el campo es obligatorio</strong></span>
-                            <span *ngIf="emailUser.errors.pattern"><strong>Error, Correo No Valido</strong></span>
+                          formControlName="correoPersona">
+                          <div *ngIf="correoPersona.invalid && (correoPersona.dirty || correoPersona.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <span *ngIf="correoPersona.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                            <span *ngIf="correoPersona.errors.pattern"><strong>Error, Correo No Valido</strong></span>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -190,32 +189,32 @@
                 <div class="col">
                     <div class="md-form">
                         <input
-                          [ngClass]="{'input-error': passwordUser.invalid && (passwordUser.dirty || passwordUser.touched)}"
+                          [ngClass]="{'input-error': passwordPersona.invalid && (passwordPersona.dirty || passwordPersona.touched)}"
                           type="password"
-                          name="passwordUser"
+                          name="passwordPersona"
                           id="key-user"
                           class="form-control"
-                          formControlName="passwordUser">
-                          <div *ngIf="passwordUser.invalid && (passwordUser.dirty || passwordUser.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <span *ngIf="passwordUser.errors.required"><strong>Error el campo es obligatorio</strong></span>
-                            <span *ngIf="passwordUser.errors.minlength"><strong>Error, La clave no es demasiado Fuerte</strong></span>
+                          formControlName="passwordPersona">
+                          <div *ngIf="passwordPersona.invalid && (passwordPersona.dirty || passwordPersona.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <span *ngIf="passwordPersona.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                            <span *ngIf="passwordPersona.errors.minlength"><strong>Error, La clave no es demasiado Fuerte</strong></span>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                        <label for="key-user">Digite su Clave de Ingreso</label>
+                        <label for="passwordPersona">Digite su Clave de Ingreso</label>
                     </div>
                 </div>
               </div>
               <div class="text-center mb-4">
-                <button type="button" [disabled]="!nuevoUsuario.valid" class="btn btn-amber btn-block z-depth-2" (click)="crearCuenta()">Crear Nueva Cuenta</button>
+                <input type="button" [disabled]="!nuevoUsuario.valid" class="btn btn-amber btn-block z-depth-2" (click)="guardarUsuario()" value="Crear Nueva Cuenta">
               </div>
             </form>
         </div>
         <div class="card-footer" style="background:#FFA000">
           <div *ngIf="flagRes == true" class="alert alert-dismissible fade show text-center text-white" role="alert"
                 style="background-color:#8BC34A;">
-                <span><b>{{ contentRes }}</b></span>
+                <span><b>Usuario Registrado con exito , {{ contentRes }}</b></span>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>

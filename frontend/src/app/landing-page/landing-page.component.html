@@ -37,9 +37,13 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right dropdown-default"
                 aria-labelledby="navbarDropdownMenuLink-333">
-                <a class="dropdown-item text-center" routerLink="/login-user"><img src="../../assets/img/iniciar-sesion.png" alt="logo sesion"> Iniciar Sesion</a><hr>
-                <a class="dropdown-item text-center" routerLink="/sign-up"><img src="../../assets/img/anadir.png" alt="logo anadir"> Crear Cuenta</a><hr>
-                <a class="dropdown-item text-center" href="#"><img src="../../assets/img/cerrar-sesion.png" alt="logo cierre sesion"> Cerrar Sesion</a>
+                <ng-container *ngIf="!autentificacionUsuario.verificandoLogueoUsuario(); else cerrarSesion">
+                  <a class="dropdown-item text-center" routerLink="/login-user"><img src="../../assets/img/iniciar-sesion.png" alt="logo sesion"> Iniciar Sesion</a><hr>
+                  <a class="dropdown-item text-center" routerLink="/sign-up"><img src="../../assets/img/anadir.png" alt="logo anadir"> Crear Cuenta</a><hr>
+                </ng-container>
+                <ng-template #cerrarSesion>
+                  <li class="dropdown-item text-center" (click)="autentificacionUsuario.logOut();"><img src="../../assets/img/cerrar-sesion.png" alt="logo cierre sesion"> Cerrar Sesion</li>
+                </ng-template>
               </div>
             </li>
           </ul>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Output } from '@angular/core';
 import { Validators , FormGroup , FormControl } from '@angular/forms';
+import { AutentificacionUsuariosService } from '../services/autentificacion-usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,57 +10,66 @@ import { Validators , FormGroup , FormControl } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient) { }
-  urlBackend:string = 'http://localhost:3500';
-
+  constructor(private autenticacionServices: AutentificacionUsuariosService , private router: Router) { }
   // Agrupando Formulario
   nuevoUsuario = new FormGroup({
-    firstName: new FormControl('', [Validators.required , Validators.maxLength(45) , Validators.minLength(5)]),
-    lastName: new FormControl('' , [Validators.required , Validators.maxLength(45) , Validators.minLength(5)]),
-    genderSameName: new FormControl('' , [Validators.required]),
-    date: new FormControl('' , [Validators.required]),
-    emailUser: new FormControl('' , [Validators.required , Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
-    passwordUser: new FormControl('' , [Validators.required , Validators.minLength(8)])
+    nombresPersona: new FormControl('', [Validators.required , Validators.maxLength(45) , Validators.minLength(5)]),
+    apellidosPersona: new FormControl('' , [Validators.required , Validators.maxLength(45) , Validators.minLength(5)]),
+    generoPersona: new FormControl('' , [Validators.required]),
+    fechaNacimiento: new FormControl('' , [Validators.required]),
+    correoPersona: new FormControl('' , [Validators.required , Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
+    passwordPersona: new FormControl('' , [Validators.required , Validators.minLength(8)])
   });
 
   // parte de alertas de borrado y creacio con exito o con error
   flagRes: boolean;
   contentRes: string = '';
+  maquetacionUsuario: any = {};
 
   // Metodos para enlazar errores con los inputs
-  get firstName() {
-    return this.nuevoUsuario.get('firstName');
+  get nombresPersona() {
+    return this.nuevoUsuario.get('nombresPersona');
   }
-  get lastName() {
-    return this.nuevoUsuario.get('lastName');
+  get apellidosPersona() {
+    return this.nuevoUsuario.get('apellidosPersona');
   }
-  get genderSameName() {
-    return this.nuevoUsuario.get('genderSameName')
+  get generoPersona() {
+    return this.nuevoUsuario.get('generoPersona')
   }
-  get date() {
-    return this.nuevoUsuario.get('date');
+  get fechaNacimiento() {
+    return this.nuevoUsuario.get('fechaNacimiento');
   }
-  get emailUser() {
-    return this.nuevoUsuario.get('emailUser');
+  get correoPersona() {
+    return this.nuevoUsuario.get('correoPersona');
   }
-  get passwordUser() {
-    return this.nuevoUsuario.get('passwordUser');
+  get passwordPersona() {
+    return this.nuevoUsuario.get('passwordPersona');
   }
   ngOnInit(): void {
   }
 
-  crearCuenta () {
-    this.httpClient.post(`${this.urlBackend}/signup` , this.nuevoUsuario.value)
-      .subscribe((res:any) => {
-        console.log(res.statusRes);
-        console.log(res.message);
-        console.log(res.usuarioCreado);
-        if(res.statusRes == 1) {
+  guardarUsuario () {
+    this.maquetacionUsuario = this.nuevoUsuario;
+    console.log(this.maquetacionUsuario.value);
+    this.autenticacionServices.crearUsuario(this.maquetacionUsuario.value)
+    .subscribe(
+      (res:any) => {
+        console.log(res);
+        if(res.codigoRes == 1) {
           this.flagRes = true;
-          this.contentRes = res.message;
+          this.contentRes = res.correoPersona;
+          // Guardamos el success en localstorage
+          //localStorage.setItem('informacionAcceso' , JSON.stringify(res));
+          localStorage.setItem('token' , res.tokenAcceso);
+          this.router.navigate(['/panel-principal']);
         } else {
           this.flagRes = false;
-          this.contentRes = res.message;
+          this.contentRes = res.mensaje;
+        }
+      } ,
+      (error) => {
+        if(error.codigoRes == 0) {
+          console.log(error.mensaje);
         }
       });
       this.nuevoUsuario.reset();

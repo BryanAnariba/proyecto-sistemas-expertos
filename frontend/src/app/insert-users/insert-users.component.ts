@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Validators , FormControl , FormGroup } from '@angular/forms';
+import { AutentificacionUsuariosService } from '../services/autentificacion-usuarios.service';
 
 
 @Component({
@@ -9,7 +10,9 @@ import { Validators , FormControl , FormGroup } from '@angular/forms';
   styleUrls: ['./insert-users.component.css']
 })
 export class InsertUsersComponent implements OnInit {
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient ,
+    private autenticacionService: AutentificacionUsuariosService) { }
   usersInvited:any = [];
   urlBackend: string = 'http://localhost:3500';
   insertEmail = new FormGroup({

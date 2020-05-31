@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutentificacionUsuariosService } from '../services/autentificacion-usuarios.service';
 
 @Component({
   selector: 'app-panel-principal',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./panel-principal.component.css']
 })
 export class PanelPrincipalComponent implements OnInit {
-
-  constructor() { }
+  nombreUsuario: string = '';
+  constructor(public autenticacionUsuario: AutentificacionUsuariosService) { }
 
   ngOnInit(): void {
   }
