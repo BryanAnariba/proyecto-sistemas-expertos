@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Validators , FormControl , FormGroup, Form } from '@angular/forms';
+import { UsuariosService } from '../services/usuarios.service';
+
 
 @Component({
   selector: 'app-panel-input',
@@ -8,9 +10,14 @@ import { Validators , FormControl , FormGroup, Form } from '@angular/forms';
   styleUrls: ['./panel-input.component.css']
 })
 export class PanelInputComponent implements OnInit {
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient ,
+    private usuariosService: UsuariosService ,
+  ) { }
 
   // Variables
+  idUsuarioLogueado: any = {};
+  nombresPersona: string = '';
   urlBackend: string = 'http://localhost:3500';
   allBlogs: any = [];
   blogIdTable:number = null;
@@ -47,6 +54,12 @@ export class PanelInputComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem('data')) {
+      this.idUsuarioLogueado = JSON.parse(localStorage.getItem('data'));
+      console.log(this.idUsuarioLogueado)
+      this.getDataUser(this.idUsuarioLogueado.id);
+    }
+
     this.viewBlogs ();
   }
 
@@ -85,5 +98,19 @@ export class PanelInputComponent implements OnInit {
       });
       this.contentRes = '';
       this.flagRes = false;
+  }
+
+
+
+  // Obtener el usuario
+  getDataUser (idUsuarioLogueado) {
+    console.log(idUsuarioLogueado);
+    this.usuariosService.getDataUser(idUsuarioLogueado)
+    .subscribe(
+      (success: any) => {
+        console.log(success);
+        this.nombresPersona = success.nombresPersona;
+      }
+    )
   }
 }

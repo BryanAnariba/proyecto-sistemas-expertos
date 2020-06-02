@@ -13,12 +13,12 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span>Bienvenido <img src="../../assets/img/usuario.png" width="35"></span>
+                <span>Bienvenido, <b> {{ nombresPersona }} </b> <img src="../../assets/img/usuario.png" width="35"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right dropdown-default"
                 aria-labelledby="navbarDropdownMenuLink-333">
                 <a class="dropdown-item text-center" routerLink="/settings-user"><img src="../../assets/img/equipo (1).png" alt="Logo equipo"> Configuraciones</a><hr>
-                <a class="dropdown-item text-center" href="#"><img src="../../assets/img/cerrar-sesion.png" alt="logo cierre sesion"> Cerrar Sesion</a>
+                <a class="dropdown-item text-center" href="" (click)="autentificacionUsuario.logOut()"><img src="../../assets/img/cerrar-sesion.png" alt="logo cierre sesion"> Cerrar Sesion</a>
               </div>
             </li>
           </ul>
@@ -50,76 +50,39 @@
                           <div class="col">
                               <div class="md-form">
                                   <input
-                                    [ngClass]="{'input-error': email.invalid && (email.dirty || email.touched)}"
-                                    formControlName="email"
+                                    [ngClass]="{'input-error': correoPersona.invalid && (correoPersona.dirty || correoPersona.touched)}"
+                                    formControlName="correoPersona"
                                     type="email"
                                     id="email-user"
                                     class="form-control ">
-                                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
-                                      <span *ngIf="email.errors.required"><strong>Error el campo es obligatorio</strong></span>
-                                      <span *ngIf="email.errors.pattern"><strong>Error, Correo No Valido</strong></span>
+                                    <div *ngIf="correoPersona.invalid && (correoPersona.dirty || correoPersona.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                      <span *ngIf="correoPersona.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                                      <span *ngIf="correoPersona.errors.pattern"><strong>Error, Correo No Valido</strong></span>
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                   <label for="email-user">Digite su Correo Electronico</label>
                               </div>
-
-                          </div>
-                          <div class="col">
-                            <div class="md-form">
-                                <input
-                                  [ngClass]="{'input-error': repeatEmail.invalid && (repeatEmail.dirty || repeatEmail.touched)}"
-                                  formControlName="repeatEmail"
-                                  type="email"
-                                  id="repeat-email-user"
-                                  class="form-control ">
-                                  <div *ngIf="repeatEmail.invalid && (repeatEmail.dirty || repeatEmail.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <span *ngIf="repeatEmail.errors.required"><strong>Error el campo es obligatorio</strong></span>
-                                    <span *ngIf="repeatEmail.errors.pattern"><strong>Error, Correo No Valido</strong></span>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                <label for="repeat-email-user">Repita su Correo Electronico</label>
-                            </div>
                         </div>
                         </div>
                         <div class="form-row">
                           <div class="col">
                               <div class="md-form">
                                   <input
-                                    [ngClass]="{'input-error': newEmail.invalid && (newEmail.dirty || newEmail.touched)}"
-                                    formControlName="newEmail"
+                                    [ngClass]="{'input-error': nuevoCorreoPersona.invalid && (nuevoCorreoPersona.dirty || nuevoCorreoPersona.touched)}"
+                                    formControlName="nuevoCorreoPersona"
                                     type="email"
                                     id="new-email-user"
                                     class="form-control ">
-                                    <div *ngIf="newEmail.invalid && (newEmail.dirty || newEmail.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
-                                      <span *ngIf="newEmail.errors.required"><strong>Error el campo es obligatorio</strong></span>
-                                      <span *ngIf="newEmail.errors.pattern"><strong>Error, Correo No Valido</strong></span>
+                                    <div *ngIf="nuevoCorreoPersona.invalid && (nuevoCorreoPersona.dirty || nuevoCorreoPersona.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                      <span *ngIf="nuevoCorreoPersona.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                                      <span *ngIf="nuevoCorreoPersona.errors.pattern"><strong>Error, Correo No Valido</strong></span>
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                   <label for="new-email-user">Digite su Nuevo Correo de Ingreso</label>
-                              </div>
-                          </div>
-                          <div class="col">
-                              <div class="md-form">
-                                  <input
-                                    [ngClass]="{'input-error': repeatNewEmail.invalid && (repeatNewEmail.dirty || repeatNewEmail.touched)}"
-                                    formControlName="repeatNewEmail"
-                                    type="email"
-                                    id="repeat-new-email-user"
-                                    class="form-control ">
-                                    <div *ngIf="repeatNewEmail.invalid && (repeatNewEmail.dirty || repeatNewEmail.touched)" class="alert alert-danger alert-dismissible fade show" role="alert">
-                                      <span *ngIf="repeatNewEmail.errors.required"><strong>Error el campo es obligatorio</strong></span>
-                                      <span *ngIf="repeatNewEmail.errors.pattern"><strong>Error, Correo No Valido</strong></span>
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                  <label for="repeat-new-email-user">Repita su Nueva Correo de Ingreso</label>
                               </div>
                           </div>
                         </div>
@@ -130,7 +93,19 @@
                         </div>
                       </div>
                       <div class="card-footer mt-3" style="background-color:#8BC34A;">
-
+                        <div *ngIf="statusResponse == 1" class="alert alert-dismissible fade show text-center text-white bg-primary" role="alert">
+                          <span><b>{{ servidorRetorna }}</b></span>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div *ngIf="statusResponse == 0" class="alert alert-dismissible fade show text-center text-white"
+                          role="alert" style="background-color:#E62E2D;">
+                          <span><b>{{ servidorRetorna }}</b></span>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
                       </div>
                     </form>
                   </div>

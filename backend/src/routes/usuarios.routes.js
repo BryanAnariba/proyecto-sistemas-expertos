@@ -21,9 +21,10 @@ router.post('/login' , ctrlUsuarios.verifCredenciales);
 router.get('/' , ctrlUsuarios.getUsers);
 
 // 4 - Obtener los datos de un usuario seleccionado
-router.get('/:id' , ctrlUsuarios.getUser);
+router.get('/:idUsuario' , ctrlUsuarios.getUser);
 
-// 5 - Actualizar los datos de un usuario 
-router.put('/:id' , ctrlUsuarios.updateUser);
+// 5 - Actualizar correo o cambiar correo de usuario
+router.put('/:idUsuario/cambio-correo' , ctrlUsuarios.cambioCorreo);
+router.put('/:idUsuario/cambio-password' , ctrlUsuarios.cambioPassword);
 
 module.exports = router;

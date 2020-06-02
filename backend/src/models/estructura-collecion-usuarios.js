@@ -22,16 +22,16 @@ usuarios = {
 plataformasWeb = {
     nombreSitio: '' ,
     description: '' ,
-    estatusSitio: '' , // Terminado, no terminado
+    estatusSitio: false , // Terminado, no terminado
     fechaCreacion: '' ,
     usuarioCreador: {
         idUsuario: '' ,
-        nombreUsuario: ''
+        nombresPersona: ''
     } ,
     participantes: [{
-        idParticipante: '' ,
-        emailParticipante: '' ,
-        roleParticipante: '' ,
+        idPersona: '' ,
+        correoPersona: '' ,
+        roleParticipante: '' , // admin , observador
         estatusParticipante: '' ,  // Activo Inactivo 
     }]
 };

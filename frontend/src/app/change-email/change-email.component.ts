@@ -1,43 +1,75 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Validators , FormControl , FormGroup } from '@angular/forms';
+import { UsuariosService } from '../services/usuarios.service';
+import { AutentificacionUsuariosService } from '../services/autentificacion-usuarios.service';
 @Component({
   selector: 'app-change-email',
   templateUrl: './change-email.component.html',
   styleUrls: ['./change-email.component.css']
 })
 export class ChangeEmailComponent implements OnInit {
-  constructor(private httpClient: HttpClient) { }
-  urlBackend:string = 'http://localhost:3500';
+  nombresPersona: string = '';
+  idUsuarioLogueado: any = {};
+  statusResponse: number = null;
+  servidorRetorna: string = '';
+
+  constructor(
+    private usuariosService: UsuariosService ,
+    public autentificacionUsuario: AutentificacionUsuariosService
+  ) { }
   changeEmail = new FormGroup({
-    email: new FormControl('' , [Validators.required , Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
-    repeatEmail: new FormControl('' , [Validators.required , Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
-    newEmail: new FormControl('' , [Validators.required , Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
-    repeatNewEmail: new FormControl('' , [Validators.required , Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
+    correoPersona: new FormControl('' , [Validators.required , Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
+    nuevoCorreoPersona: new FormControl('' , [Validators.required , Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
   });
 
-  get email () {
-    return this.changeEmail.get('email');
+  get correoPersona () {
+    return this.changeEmail.get('correoPersona');
   }
 
-  get repeatEmail () {
-    return this.changeEmail.get('repeatEmail');
+  get nuevoCorreoPersona () {
+    return this.changeEmail.get('nuevoCorreoPersona');
   }
 
-  get newEmail () {
-    return this.changeEmail.get('newEmail');
-  }
-
-  get repeatNewEmail () {
-    return this.changeEmail.get('repeatNewEmail');
-  }
   ngOnInit(): void {
+    if (localStorage.getItem('data')) {
+      this.idUsuarioLogueado = JSON.parse(localStorage.getItem('data'));
+      console.log(this.idUsuarioLogueado)
+      this.getDataUser(this.idUsuarioLogueado.id);
+    }
   }
   saveChanges (){
-    this.httpClient.post(`${this.urlBackend}/change-email` , this.changeEmail.value)//cambiar a put cuando se guarde en sesion un id de usuario
-      .subscribe((res:any) =>{
-        console.log(res.statusRes + ' -> ' + res.message);
-      });
-      this.changeEmail.reset();
+    this.usuariosService.cambiaCorreo(this.idUsuarioLogueado.id , this.changeEmail.value)
+    .subscribe(
+      (success:any) => {
+        if (success.codigoRes == 1) {
+          this.statusResponse = 1;
+          this.servidorRetorna = success.mensaje;
+          this.changeEmail.reset();
+        } else {
+          if (success.codigoRes == 0) {
+            this.statusResponse = 0;
+            this.servidorRetorna = success.mensaje;
+          }
+        }
+      } ,
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+
+  // Obtener el usuario
+  getDataUser (idUsuarioLogueado) {
+    console.log(idUsuarioLogueado);
+    this.usuariosService.getDataUser(idUsuarioLogueado)
+    .subscribe(
+      (success: any) => {
+        this.nombresPersona = success.nombresPersona;
+      } ,
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 }

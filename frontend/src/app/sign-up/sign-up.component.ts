@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-
+  dataUser: any = {};
   constructor(private autenticacionServices: AutentificacionUsuariosService , private router: Router) { }
   // Agrupando Formulario
   nuevoUsuario = new FormGroup({
@@ -60,6 +60,10 @@ export class SignUpComponent implements OnInit {
           this.contentRes = res.correoPersona;
           // Guardamos el success en localstorage
           //localStorage.setItem('informacionAcceso' , JSON.stringify(res));
+          this.dataUser = {
+            id: res.id
+          };
+          localStorage.setItem('data' , JSON.stringify(this.dataUser));
           localStorage.setItem('token' , res.tokenAcceso);
           this.router.navigate(['/panel-principal']);
         } else {

@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-user.component.css']
 })
 export class LoginUserComponent implements OnInit {
-
+  dataUser: any = {
+    id: ''
+  };
   constructor(private autenticationService: AutentificacionUsuariosService , private router: Router ) { }
   disparadorMensajeServer: boolean = false;
   mensajeDesdeServer: string = '';
@@ -46,9 +48,12 @@ export class LoginUserComponent implements OnInit {
         if(success.codigoRes == 1) {
           console.log({ mensaje: 'Credenciales Correctas' });
           console.log(success);
-
           // Guardamos el success en localstorage
           //localStorage.setItem('informacionAcceso' , JSON.stringify(success));
+          this.dataUser = {
+            id: success.id
+          };
+          localStorage.setItem('data' , JSON.stringify(this.dataUser));
           localStorage.setItem('token' , success.tokenAcceso);
           console.log('tu token ' , localStorage.getItem('token'));
           this.router.navigate(['/panel-principal']);

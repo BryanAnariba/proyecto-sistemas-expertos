@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const ctrlUsuarios = {};
 const SECRET_KEY = 'key';
 const modeloUsuario = require('../models/usuarios.model');
+const mongoose = require('mongoose');
 
 // 1 - Registrar un nuevo usuario a la plataforma
 ctrlUsuarios.crearUsuario = (req , res) => {
@@ -27,6 +28,7 @@ ctrlUsuarios.crearUsuario = (req , res) => {
         // Al crear una cuenta solo eso mandaremos al frontend evitando enviar el password
         let informacionUsuario = {
             codigoRes: 1 ,
+            id: exito._id ,
             nombresPersona: exito.nombresPersona ,
             correoPersona: exito.correoPersona ,
             tokenAcceso: tokenAcceso ,
@@ -69,6 +71,7 @@ ctrlUsuarios.verifCredenciales = (req , res) => {
                 // Hacemos un json con los datos que queremos que el usuario vea
                 let informacionUsuario = {
                     codigoRes: 1 ,
+                    id: exito[0]._id ,
                     nombresPersona: exito[0].nombresPersona ,
                     correoPersona: exito[0].correoPersona ,
                     tokenAcceso: tokenAcceso ,
@@ -95,17 +98,73 @@ ctrlUsuarios.verifCredenciales = (req , res) => {
 
 // 3 - Obtener los usuarios registrados esposible ocuparla despues
 ctrlUsuarios.getUsers = (req , res) => {
-
+    modeloUsuario.find()
+    .then((exito) => {
+        res.send(exito);
+        res.end();
+    })
+    .catch((error) => {
+        res.send(error);
+        res.end();
+    })
 }
 
 // 4 - Obtener los datos de un usuario seleccionado
 ctrlUsuarios.getUser = (req , res) => {
-
+    let { idUsuario } = req.params;
+    modeloUsuario.find({ _id: idUsuario})
+    .then((exito) => {
+        res.send(exito[0]);
+        res.end();
+    })
+    .catch((error) => {
+        res.send(error);
+        res.end();
+    });
 }
 
-// 5 - Actualizar los datos de un usuario
-ctrlUsuarios.updateUser = (req, res) => {
-
+// 5 - Cambiar el correo del usuario
+ctrlUsuarios.cambioCorreo = (req , res) => {
+    const { idUsuario } = req.params;
+    const {  correoPersona , nuevoCorreoPersona } = req.body;
+    modeloUsuario.updateOne({ _id: idUsuario , correoPersona: correoPersona} , {
+        correoPersona: nuevoCorreoPersona
+    })
+    .then((success) => {
+        console.log(success);
+        if (success.nModified == 1) {
+            res.send({ codigoRes: success.ok , mensaje: 'Correo Cambiado con exito' });
+            res.end();
+        } else {
+            res.send({ codigoRes: 0 , mensaje: 'El correo ' + correoPersona + ' no fue encotrado' });
+            res.end();
+        }
+    })
+    .catch((error) => {
+        res.send(error);
+        res.end();
+    });
 }
 
+// 6 - cambiar la clave del usuario
+ctrlUsuarios.cambioPassword = (req , res) => {
+    let { nuevoPasswordPersona } = req.body;
+    let { idUsuario } = req.params;
+    modeloUsuario.updateOne({ _id: idUsuario } , {
+        passwordPersona:  bcrypt.hashSync(nuevoPasswordPersona)
+    })
+    .then((exito) => {
+        if (exito.nModified == 1) {
+            res.send({ codigoRes: exito.ok , mensaje: 'Clave Cambiada Satisfactoriamente' });
+            res.end();
+        } else {
+            res.send({ codigoRes: 0 , mensaje: 'Ha OCURRIDO un error intente mas tarde' });
+            res.end();
+        }
+    })
+    .catch((error) => {
+        res.send(error);
+        res.end();
+    })
+}
 module.exports = ctrlUsuarios; 

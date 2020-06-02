@@ -1,13 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Validators , FormControl , FormGroup } from '@angular/forms';
+import { UsuariosService } from '../services/usuarios.service';
 @Component({
   selector: 'app-insert-new-blog',
   templateUrl: './insert-new-blog.component.html',
   styleUrls: ['./insert-new-blog.component.css']
 })
 export class InsertNewBlogComponent implements OnInit {
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient ,
+    private usuariosService: UsuariosService
+  ) { }
+
+  // Variables
+  idUsuarioLogueado: any = {};
+  nombresPersona: string = '';
+
   urlBackend: string = 'http://localhost:3500';
   allBlogs: any = [];
   newBlog = new FormGroup({
@@ -29,6 +38,11 @@ export class InsertNewBlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewBlogs ()
+    if (localStorage.getItem('data')) {
+      this.idUsuarioLogueado = JSON.parse(localStorage.getItem('data'));
+      console.log(this.idUsuarioLogueado)
+      this.getDataUser(this.idUsuarioLogueado.id);
+    }
   }
 
   // Guardar nueva entrada o blog
@@ -78,5 +92,15 @@ export class InsertNewBlogComponent implements OnInit {
       this.flagRes = false;
   }
 
-
+  // Obtener el usuario
+  getDataUser (idUsuarioLogueado) {
+    console.log(idUsuarioLogueado);
+    this.usuariosService.getDataUser(idUsuarioLogueado)
+    .subscribe(
+      (success: any) => {
+        console.log(success);
+        this.nombresPersona = success.nombresPersona;
+      }
+    )
+  }
 }

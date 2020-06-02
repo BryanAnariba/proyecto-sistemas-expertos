@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AutentificacionUsuariosService } from './services/autentificacion-usuarios.service';
 
 @Component({
@@ -8,10 +8,11 @@ import { AutentificacionUsuariosService } from './services/autentificacion-usuar
 })
 export class AppComponent {
   title = 'frontend';
-
-  constructor(private autentifica: AutentificacionUsuariosService){}
-
+  // No quitar
+  constructor(private autentifica: AutentificacionUsuariosService){
+  }
   getStatus () {
     return this.autentifica.verificandoLogueoUsuario();
   }
+
 }

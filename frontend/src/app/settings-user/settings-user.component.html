@@ -1,6 +1,6 @@
 <nav id="settings-container"class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" style="background-color: #24355C;">
   <div class="container">
-      <a class="navbar-brand" routerLink="/panel-input"><span class="font-weight-bolder text-white"><img src="../../assets/img/cerrar-sesion.png" alt="Logo Casita"> Regresar Al Panel Principal</span></a>
+      <a class="navbar-brand" routerLink="/panel-principal"><span class="font-weight-bolder text-white"><img src="../../assets/img/cerrar-sesion.png" alt="Logo Casita"> Regresar Al Panel Principal</span></a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
           aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span>Bienvenido <img src="../../assets/img/usuario.png" width="35"></span>
+                <span>Bienvenido, <b> {{ nombresPersona }} </b> <img src="../../assets/img/usuario.png" width="35"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right dropdown-default"
                 aria-labelledby="navbarDropdownMenuLink-333">
