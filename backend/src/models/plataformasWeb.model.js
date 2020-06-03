@@ -1,29 +1,19 @@
 const mongoose = require('mongoose');
 
 const esquemaPlataformas = new mongoose.Schema({
-    nombreSitioWeb: {
-        type: String ,
-        required: true
-    } ,
-    descripcion: {
-        type: String ,
-        required: true
-
-    } ,
 	idCreadorSitioWeb: {
-        type: String ,
+        type: Object ,
         required: true
     } ,
     nombreCreadorSitioWeb: {
         type: String ,
         required: true
     } ,
-	estatusSitioWeb: {
-        type: Boolean ,
-        required: true
-    } ,
-	Colaboradores: {
-        type: Array 
+    statusAdmin: {
+        type: Boolean
+    } , 
+	plataformasCreadas: {
+        type: Array
     }
 },{
     timestamps: true

@@ -88,35 +88,38 @@
                           <div class="card-body">
                             <form [formGroup]="newBlog">
                               <div class="md-form">
-                                <input [ngClass]="{'input-error': siteId.invalid && (siteId.dirty || siteId.touched)}"
-                                  formControlName="siteId" type="text" id="siteId-user" class="form-control ">
-                                <div *ngIf="siteId.invalid && (siteId.dirty || siteId.touched)"
+                                <input [ngClass]="{'input-error': nombreSitioWeb.invalid && (nombreSitioWeb.dirty || nombreSitioWeb.touched)}"
+                                  formControlName="nombreSitioWeb" type="email" id="nombreSitioWeb-user" class="form-control ">
+                                <div *ngIf="nombreSitioWeb.invalid && (nombreSitioWeb.dirty || nombreSitioWeb.touched)"
                                   class="alert alert-danger alert-dismissible fade show" role="alert">
-                                  <span *ngIf="siteId.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                                  <span *ngIf="nombreSitioWeb.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                                  <span *ngIf="nombreSitioWeb.errors.maxlength"><strong>Nombre del blog no mayor a 50 caracteres</strong></span>
+                                  <span *ngIf="nombreSitioWeb.errors.minlength"><strong>Nombre del blog mayor a 5 caracteres</strong></span>
                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
-                                <label for="siteId-user">Digite id despues captura con cookie</label>
+                                <label for="siteId-user">Digite nombre sitio: </label>
                               </div>
                               <div class="md-form">
-                                <input [ngClass]="{'input-error': blogName.invalid && (blogName.dirty || blogName.touched)}"
-                                  formControlName="blogName" type="email" id="blogName-user" class="form-control ">
-                                <div *ngIf="blogName.invalid && (blogName.dirty || blogName.touched)"
+                                <input [ngClass]="{'input-error': descripcion.invalid && (descripcion.dirty || descripcion.touched)}"
+                                  formControlName="descripcion" type="email" id="descripcion-user" class="form-control ">
+                                <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
                                   class="alert alert-danger alert-dismissible fade show" role="alert">
-                                  <span *ngIf="blogName.errors.required"><strong>Error el campo es obligatorio</strong></span>
-                                  <span *ngIf="blogName.errors.maxLength"><strong>Nombre del blog no mayor a 50 caracteres</strong></span>
-                                  <span *ngIf="blogName.errors.minLength"><strong>Nombre del blog mayor a 1 caracter</strong></span>
+                                  <span *ngIf="descripcion.errors.required"><strong>Error el campo es obligatorio</strong></span>
+                                  <span *ngIf="descripcion.errors.maxLength"><strong>Nombre del blog no mayor a 50 caracteres</strong></span>
                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
-                                <label for="blogName-user">Ingrese el nombre del blog</label>
+                                <label for="blogName-user">Ingrese descripcion del sitio: </label>
                               </div>
                               <div class="form-row mt-3">
                                 <div class="col text-center items-center mx-auto">
-                                  <button type="button" class="btn btn-light-green" [disabled]="!newBlog.valid"
+                                  <button *ngIf="creadorSitios == ''" type="button" class="btn btn-light-green" [disabled]="!newBlog.valid"
                                     (click)="saveBlog()">Guardar Blog</button>
+                                  <button *ngIf="creadorSitios != ''" type="button" class="btn btn-light-green" [disabled]="!newBlog.valid"
+                                    (click)="addBlog()">Agregar Nuevo Blog</button>
                                 </div>
                               </div>
                             </form>
@@ -129,7 +132,7 @@
                       <div class="col-lg-8 col-sm-12">
                         <div class="card">
                           <div class="card-header text-center bg-dark">
-                            <h3 style="color:#FFA000;">Tablero de Usuarios</h3>
+                            <h3 style="color:#FFA000;">Sitios Creados por, {{creadorSitios}}</h3>
                           </div>
                           <div class="card-body">
                             <table class="table  table-hover">
@@ -142,7 +145,7 @@
                                     Id Sitio
                                   </th>
                                   <th>
-                                    Usuario
+                                    Sitio Web
                                   </th>
                                   <th>
                                     Eliminar Sitio
@@ -150,11 +153,11 @@
                                 </tr>
                               </thead>
                               <tbody class="table-light table-bordered">
-                                <tr *ngFor="let blog of allBlogs; let i = index" >
-                                  <td class="mx-auto">{{ i }}</td>
-                                  <td class="mx-auto">{{ blog.siteId }}</td>
-                                  <td class="mx-auto">{{ blog.blogName }}</td>
-                                  <td class="mx-auto"><a type="button" class="btn btn-danger btn-rounded" (click)="deleteBlog( i )">Eliminar</a></td>
+                                <tr *ngFor="let blogs of allBlogs; let i = index" >
+                                  <td class="mx-auto">{{i+1}}</td>
+                                  <td class="mx-auto">{{blogs._id}}</td>
+                                  <td class="mx-auto">{{blogs.nombreSitioWeb}}</td>
+                                  <td class="mx-auto"><a type="button" class="btn btn-danger btn-rounded" (click)="deleteBlog(blogs._id)">Eliminar</a></td>
                                 </tr>
                               </tbody>
                             </table>

@@ -132,7 +132,9 @@
               <h2 style="color:#FFA000"> Sitio Web -> {{ blogDetaills.blogName }}</h2>
             </div>
             <div class="card-body">
-              <div [froalaEditor]="dataFroala" [(froalaModel)]="editorContent"></div>
+              <div #jalame [froalaEditor]="dataFroala"
+
+              [(froalaModel)]="editorContent"  ></div>
             </div>
             <div class="card-footer" style="background:#FFA000">
               <h3 class="text-center text-white">Diseña aqui</h3>
@@ -161,10 +163,10 @@
                 </thead>
                 <tbody class="table-light table-bordered">
                   <tr *ngFor="let blog of allBlogs; let i = index">
-                    <td>{{ i }}</td>
-                    <td class="mx-auto">{{ blog.blogName }}</td>
+                    <td>{{ i + 1}}</td>
+                    <td class="mx-auto">{{ blog.nombreSitioWeb }}</td>
                     <td class="mx-auto"><a type="button" class="btn btn-success btn-rounded" routerLink="/panel-input"
-                        (click)="goTheBlog(i)">Mostrar sitio</a></td>
+                        (click)="goTheBlog(blog._id)">Mostrar sitio</a></td>
                   </tr>
                 </tbody>
               </table>

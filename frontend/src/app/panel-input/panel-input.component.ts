@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Validators , FormControl , FormGroup, Form } from '@angular/forms';
 import { UsuariosService } from '../services/usuarios.service';
+import { PlataformasWebService } from '../services/plataformas-web.service';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class PanelInputComponent implements OnInit {
   constructor(
     private httpClient: HttpClient ,
     private usuariosService: UsuariosService ,
+    private plataformasService: PlataformasWebService
   ) { }
 
   // Variables
@@ -21,6 +23,8 @@ export class PanelInputComponent implements OnInit {
   urlBackend: string = 'http://localhost:3500';
   allBlogs: any = [];
   blogIdTable:number = null;
+  contenido: string = '';
+  muestraContenido: any = {};
   nuevoContenido: any = {
     siteId: '' ,
     blogName: '',
@@ -31,7 +35,7 @@ export class PanelInputComponent implements OnInit {
     blogName: '',
     content: ''
   };
-
+  aguardar:string='';
   // parte de alertas de borrado y creacio con exito o con error
   flagRes: boolean;
   contentRes: string = '';
@@ -41,16 +45,20 @@ export class PanelInputComponent implements OnInit {
     charCounterCount: false
   }
   editorContent : string  =  '';
-
-
+  conten: string = '';
 
   // Metodos
   viewBlogs () {
-    this.httpClient.get(`${this.urlBackend}/blogs`)
-      .subscribe((res:any) => {
-        this.allBlogs = res;
-        console.log(this.allBlogs);
-      });
+    this.plataformasService.obtenerPlataformas(this.idUsuarioLogueado.id)
+    .subscribe(
+      (success: any) => {
+        console.log(success);
+        this.allBlogs = success.plataformasCreadas;
+      } ,
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 
   ngOnInit(): void {
@@ -66,11 +74,12 @@ export class PanelInputComponent implements OnInit {
   // para ir al blog y cargar el json del contenido el blog en froala
   goTheBlog ( blogId ) {
     this.blogIdTable = blogId;
-    this.httpClient.get(`${this.urlBackend}/blogs/${this.blogIdTable}`)
+    this.plataformasService.devuelveContenido(this.idUsuarioLogueado.id , blogId)
       .subscribe((res:any) => {
         console.log(res);
-        this.editorContent = res.content;
-        this.blogDetaills = res;
+        this.muestraContenido = res;
+        ///this.editorContent = res.creadorSitioWeb;
+        //this.blogDetaills = res;
 
         // igualando a componentes para mostrarlo en el html debido a cruce o binding ngModel
         this.editorContent = res.content;
@@ -79,25 +88,19 @@ export class PanelInputComponent implements OnInit {
   }
 
   guardar() {
-    this.nuevoContenido = {
-      siteId: this.blogDetaills.siteId ,
-      blogName: this.blogDetaills.blogName,
-      content: this.editorContent
-    };
-    console.log(this.nuevoContenido);
-    this.httpClient.put(`${this.urlBackend}/blogs/${this.blogIdTable}`, this.nuevoContenido)
-      .subscribe((res:any) => {
-        console.log(res.statusRes + ' -> ' + res.message);
-        if(res.statusRes == 1) {
-          this.flagRes = true;
-          this.contentRes = res.message;
-        } else {
-          this.flagRes = false;
-          this.contentRes = res.message;
-        }
-      });
-      this.contentRes = '';
-      this.flagRes = false;
+    console.log(this.editorContent);
+    this.plataformasService.guardarCambioc(this.idUsuarioLogueado.id , this.blogIdTable , this.editorContent)
+    .subscribe(
+      (success: any) =>{
+        console.log(success);
+        this.flagRes = true;
+        this.contentRes = 'Cambios realizados exito';
+      } ,
+      (error) => {
+        console.log(error);
+      }
+    )
+    this.flagRes = false;
   }
 
 
@@ -108,7 +111,6 @@ export class PanelInputComponent implements OnInit {
     this.usuariosService.getDataUser(idUsuarioLogueado)
     .subscribe(
       (success: any) => {
-        console.log(success);
         this.nombresPersona = success.nombresPersona;
       }
     )
