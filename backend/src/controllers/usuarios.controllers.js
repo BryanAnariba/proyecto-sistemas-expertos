@@ -50,52 +50,7 @@ ctrlUsuarios.crearUsuario = (req , res) => {
 }
 
 // 2 - Logueo de usuario para lo cual se necesitan las credenciales
-ctrlUsuarios.verifCredenciales = (req , res) => {
-    let { correoPersona , passwordPersona } = req.body; // Capturamos parametros
-    let password;
-
-    modeloUsuario.find({ correoPersona: correoPersona })
-    .then((exito) => {
-        if(!exito[0]) {
-            res.send({ 
-                codigoRes: 2 , 
-                mensaje: 'El correo no fue encontrado' 
-            });
-            res.end();
-        } else {
-            password = bcrypt.compareSync(passwordPersona , exito[0].passwordPersona);
-            if(password) { // Si son iguales que es true
-                let expiresIn = 24*60*60;
-                let tokenAcceso = jwt.sign({ id: exito._id } , SECRET_KEY , { expiresIn: expiresIn });
-
-                // Hacemos un json con los datos que queremos que el usuario vea
-                let informacionUsuario = {
-                    codigoRes: 1 ,
-                    id: exito[0]._id ,
-                    nombresPersona: exito[0].nombresPersona ,
-                    correoPersona: exito[0].correoPersona ,
-                    tokenAcceso: tokenAcceso ,
-                    expiresIn: expiresIn
-                };
-
-                // Los enviamos esos datos
-                res.status(200).send(informacionUsuario);
-                res.end();
-            } else { // Sino
-                res.send({ 
-                    codigoRes: 0 ,
-                    mensaje: 'Clave Incorrecta' 
-                });
-                res.end();
-            }
-        }
-    })
-    .catch((error) => {
-        res.send({ codigoRes: 0, mensaje: 'Ha ocurrido un error, verificar mas tarde' });
-        res.end();
-    })
-}
-
+ctrlUsuarios.verifCredenciales;
 // 3 - Obtener los usuarios registrados esposible ocuparla despues
 ctrlUsuarios.getUsers = (req , res) => {
     modeloUsuario.find()
